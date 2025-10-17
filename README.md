@@ -1,13 +1,13 @@
 # TinyTrade - Socialized Micro-Trading on Base
 
-A Farcaster-native Mini App for sharing, discovering, and monetizing verified micro-trades from Hyperliquid.
+A Base Mini App that enables users to share, discover, and monetize verified micro-trades from Hyperliquid within a Farcaster-native social context.
 
 ## Features
 
-- ✅ **Verified Trade Sharing**: Post Hyperliquid trades with API verification
-- 🔒 **P&L Unlocking**: Monetize insights with micro-fees ($0.01 USDC)
-- 📋 **One-Click Copy**: Followers can copy trades instantly
-- 🧾 **Onchain Receipts**: ERC-8004 receipts via Vistara for transparency
+- 🔒 **Verified Trade Sharing**: Post and monetize successful Hyperliquid trades
+- 📊 **P&L Unlocking**: Pay micro-fees to unlock detailed trade insights
+- 📋 **One-Click Copy**: Instantly replicate successful trading strategies
+- 🧾 **ERC-8004 Receipts**: Immutable onchain verification via Vistara
 - 🎯 **Farcaster Integration**: Native social features and discovery
 
 ## Tech Stack
@@ -17,7 +17,7 @@ A Farcaster-native Mini App for sharing, discovering, and monetizing verified mi
 - **Wallet**: OnchainKit + Coinbase Wallet
 - **Social**: Farcaster MiniKit
 - **Styling**: Tailwind CSS (Coinbase theme)
-- **Trading**: Hyperliquid API integration
+- **TypeScript**: Full type safety
 
 ## Getting Started
 
@@ -26,14 +26,14 @@ A Farcaster-native Mini App for sharing, discovering, and monetizing verified mi
 npm install
 ```
 
-2. Create `.env.local`:
+2. Create `.env.local` from `.env.local.example`:
 ```bash
 cp .env.local.example .env.local
 ```
 
 3. Add your OnchainKit API key from [Coinbase Developer Platform](https://portal.cdp.coinbase.com/)
 
-4. Run development server:
+4. Run the development server:
 ```bash
 npm run dev
 ```
@@ -44,53 +44,63 @@ npm run dev
 
 ```
 app/
-├── components/          # React components
-│   ├── Providers.tsx   # OnchainKit + React Query providers
-│   ├── ConnectWallet.tsx
-│   ├── TradeCard.tsx
-│   └── PostTradeModal.tsx
-├── page.tsx            # Home page
-├── layout.tsx          # Root layout
-├── globals.css         # Global styles (Coinbase theme)
-├── loading.tsx         # Loading state
-└── error.tsx           # Error boundary
+├── components/
+│   ├── Providers.tsx       # OnchainKit + React Query providers
+│   ├── ConnectWallet.tsx   # Wallet connection component
+│   ├── TradeCard.tsx       # Trade display card
+│   └── PostTradeModal.tsx  # Trade posting modal
+├── page.tsx                # Main landing page
+├── layout.tsx              # Root layout with metadata
+├── globals.css             # Global styles + Coinbase theme
+├── loading.tsx             # Loading state
+└── error.tsx               # Error boundary
 
 public/
 └── .well-known/
-    └── farcaster.json  # Mini App manifest
+    └── farcaster.json      # Farcaster manifest
 ```
 
-## Key Features Implementation
+## Key Components
 
-### Trade Verification
-- Hyperliquid API integration for trade authenticity
-- Real-time P&L calculation
-- Reputation scoring system
+### TradeCard
+Displays trade information with locked/unlocked states:
+- Trader identity and reputation
+- Asset and price details
+- P&L percentage (locked/unlocked)
+- Action buttons (Unlock/Copy)
 
-### Payment Flow
-- USDC micro-transactions ($0.01)
-- Gas-sponsored transactions via Paymaster
-- x402 payment integration
+### PostTradeModal
+Modal for traders to post new trades:
+- Asset selection
+- Entry/exit price inputs
+- Fee configuration
+- ERC-8004 receipt info
 
-### Social Features
-- Farcaster Frame embeds
-- Notification system
-- Trader profiles with reputation
+### ConnectWallet
+Wallet connection button using OnchainKit
+
+## Theming
+
+The app uses the **Coinbase theme** with:
+- Dark navy background (`hsl(220, 26%, 14%)`)
+- Light text (`hsl(210, 20%, 98%)`)
+- Coinbase blue accents (`#0052ff`)
+- Subtle rounded borders
+
+CSS variables are defined in `globals.css` and mapped to Tailwind utilities.
 
 ## Deployment
 
-Deploy to Vercel:
-
+1. Build the production app:
 ```bash
 npm run build
-vercel deploy
 ```
 
-## Environment Variables
+2. Deploy to Vercel, Netlify, or your preferred platform
 
-- `NEXT_PUBLIC_ONCHAINKIT_API_KEY`: OnchainKit API key
-- `NEXT_PUBLIC_BASE_RPC_URL`: Base RPC endpoint
-- `HYPERLIQUID_API_KEY`: Hyperliquid API key (optional)
+3. Ensure environment variables are set in production
+
+4. Update the Farcaster manifest URLs in `public/.well-known/farcaster.json`
 
 ## License
 

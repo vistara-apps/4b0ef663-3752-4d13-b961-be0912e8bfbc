@@ -1,9 +1,12 @@
 export default function Loading() {
   return (
     <div className="min-h-screen bg-bg flex items-center justify-center">
-      <div className="text-center">
-        <div className="w-16 h-16 border-4 border-accent/20 border-t-accent rounded-full animate-spin mx-auto mb-4" />
-        <p className="text-fg/60">Loading TinyTrade...</p>
+      <div className="animate-pulse space-y-4 w-full max-w-md px-4">
+        <div className="h-8 bg-surface rounded w-1/4"></div>
+        <div className="space-y-3">
+          <div className="h-4 bg-surface rounded"></div>
+          <div className="h-4 bg-surface rounded w-5/6"></div>
+        </div>
       </div>
     </div>
   );
