@@ -7,11 +7,11 @@
   "frame": {
     "version": "next",
     "name": "TinyTrade",
-    "homeUrl": "https://tinytrade.app/home",
+    "homeUrl": "https://app-12e8bfbc-a356.vercel.app",
     "iconUrl": "https://tinytrade.app/icon.png",
     "splashImageUrl": "https://tinytrade.app/splash.png",
     "splashBackgroundColor": "#0D0D12",
-    "webhookUrl": "https://tinytrade.app/api/minikit-webhook",
+    "webhookUrl": "https://app-12e8bfbc-a356.vercel.app/api/webhook",
     "subtitle": "Socialized micro-trading on Base",
     "description": "Share, discover, and monetize verified micro-trades from Hyperliquid within a Farcaster-native social context.",
     "screenshotUrls": [
@@ -20,7 +20,13 @@
       "https://tinytrade.app/screenshot3.png"
     ],
     "primaryCategory": "finance",
-    "tags": ["trading", "defi", "social", "base", "hyperliquid"],
+    "tags": [
+      "trading",
+      "defi",
+      "social",
+      "base",
+      "hyperliquid"
+    ],
     "heroImageUrl": "https://tinytrade.app/hero.png",
     "tagline": "Socialized micro-trading on Base",
     "ogTitle": "TinyTrade - Socialized Micro-Trading",
